@@ -14,6 +14,9 @@ export default function Home() {
 			<main className='mx-auto w-[90%]'>
 				<section className='mt-3 h-[500px]'>
 					<Form />
+					<div className='before:block before:my-20 before:h-[1px] before:w-full before:bg-gray-300 before:mx-auto'>
+
+					</div>
 				</section>
 			</main>
 		</>
