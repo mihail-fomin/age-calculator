@@ -11,6 +11,27 @@ export default function Home() {
 	const [month, setMonth] = React.useState('')
 	const [year, setYear] = React.useState('')
 
+	function calculateAge() {
+		let monthPast = 0
+		let dayPast = 0
+		const today = new Date()
+		const birth = new Date(year, month - 1, day)
+
+		let age = today.getFullYear() - birth.getFullYear()
+		let monthDif = today.getMonth() - birth.getMonth()
+		if (monthDif < 0 || (monthDif === 0 && today.getDate() < birth.getDate())) {
+			age--
+			monthPast = 12 + monthDif
+		}
+		dayPast = birth.getDate() - today.getDate()
+		if (dayPast < 0) {
+			dayPast = 31 + dayPast
+		}
+		return { age, monthPast, dayPast }
+	}
+
+
+
 	return (
 		<>
 			<Head>
@@ -34,7 +55,9 @@ export default function Home() {
 					{/* <div className='bg-black'>
 						<svg className='w-12 h-12 text-white ' src={icon} />
 					</div> */}
-
+					<p>{!year ? '-- ' : calculateAge().age} years</p>
+					<p>{!year ? '-- ' : calculateAge().monthPast} months</p>
+					<p>{!year ? '-- ' : calculateAge().dayPast} days</p>
 				</section>
 			</main>
 		</>
