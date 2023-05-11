@@ -1,11 +1,19 @@
+// import input from "./input";
+// import { useDispatch, useSelector } from 'react-redux';
+// import { setDay, setMonth, setYear } from '../store/formSlice'
+
 import InputField from "./InputField";
-import { useDispatch, useSelector } from 'react-redux';
-import { setDay, setMonth, setYear } from '../store/formSlice'
 
 
-export default function Form() {
-	const { day, month, year } = useSelector(state => state.formState);
-
+export default function Form({
+	day,
+	month,
+	year,
+	setDay,
+	setMonth,
+	setYear
+}) {
+	// const { day, month, year } = useSelector(state => state.formState);
 
 
 	return (

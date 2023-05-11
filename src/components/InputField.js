@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function InputField({ children, placeholder, value, setState }) {
-	const dispatch = useDispatch();
 
+	const handleInputChange = (e) => {
+		setState(e.target.value)
+	}
 
 	return (
 		<div className="w-1/3">
@@ -16,7 +17,7 @@ export default function InputField({ children, placeholder, value, setState }) {
 					type='number'
 					placeholder={placeholder}
 					value={value}
-					onChange={() => dispatch(setState(e.target.value))}
+					onChange={handleInputChange}
 				/>
 			</label>
 		</div>
