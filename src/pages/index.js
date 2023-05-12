@@ -11,26 +11,34 @@ export default function Home() {
 	const [month, setMonth] = React.useState('')
 	const [year, setYear] = React.useState('')
 
-	function calculateAge() {
-		let monthPast = 0
-		let dayPast = 0
+	function calculateAge(birthDay) {
+		let birthDate = new Date(birthDay)
 		const today = new Date()
-		const birth = new Date(year, month - 1, day)
 
-		let age = today.getFullYear() - birth.getFullYear()
-		let monthDif = today.getMonth() - birth.getMonth()
-		if (monthDif < 0 || (monthDif === 0 && today.getDate() < birth.getDate())) {
-			age--
-			monthPast = 12 + monthDif
+		// counting years between dates
+		let age = today.getFullYear() - birthDate.getFullYear()
+
+		// coutning months and days between dates
+		let m = today.getMonth() - birthDate.getMonth()
+		let d = today.getDate() - birthDate.getDate()
+
+		if (m < 0 || (m === 0 && d < 0)) {
+			age--;
+			m += 12;
 		}
-		dayPast = birth.getDate() - today.getDate()
-		if (dayPast < 0) {
-			dayPast = 31 + dayPast
-		}
-		return { age, monthPast, dayPast }
+
+		// let monthDif = today.getMonth() - birth.getMonth()
+		// if (monthDif < 0 || (monthDif === 0 && today.getDate() < birth.getDate())) {
+		// 	age--
+		// 	monthPast = 12 + monthDif
+		// }
+
+		return { age, m, d }
 	}
 
-
+	function getBirthdayString() {
+		return year + '-' + month + '-' + day
+	}
 
 	return (
 		<>
@@ -55,9 +63,9 @@ export default function Home() {
 					{/* <div className='bg-black'>
 						<svg className='w-12 h-12 text-white ' src={icon} />
 					</div> */}
-					<p>{!year ? '-- ' : calculateAge().age} years</p>
-					<p>{!year ? '-- ' : calculateAge().monthPast} months</p>
-					<p>{!year ? '-- ' : calculateAge().dayPast} days</p>
+					<p>{!year ? '-- ' : calculateAge(getBirthdayString()).age} years</p>
+					<p>{!year ? '-- ' : calculateAge(getBirthdayString()).m} months</p>
+					<p>{!year ? '-- ' : calculateAge(getBirthdayString()).d} days</p>
 				</section>
 			</main>
 		</>
