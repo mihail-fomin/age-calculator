@@ -22,16 +22,13 @@ export default function Home() {
 		let m = today.getMonth() - birthDate.getMonth()
 		let d = today.getDate() - birthDate.getDate()
 
+		// if current month is lower than birth month
+		// or this month is equal to current month and current day
+		// is lower than birth day
 		if (m < 0 || (m === 0 && d < 0)) {
 			age--;
 			m += 12;
 		}
-
-		// let monthDif = today.getMonth() - birth.getMonth()
-		// if (monthDif < 0 || (monthDif === 0 && today.getDate() < birth.getDate())) {
-		// 	age--
-		// 	monthPast = 12 + monthDif
-		// }
 
 		return { age, m, d }
 	}
