@@ -12,7 +12,7 @@ export default function Home() {
 	const [year, setYear] = React.useState('')
 
 	function calculateAge(birthDay) {
-		let birthDate = new Date(birthDay)
+		const birthDate = new Date(birthDay)
 		const today = new Date()
 
 		// counting years between dates
@@ -29,12 +29,22 @@ export default function Home() {
 			age--;
 			m += 12;
 		}
+		if (d < 0) {
+			m--
+			d += getDaysInMonth(birthDay)
+		}
 
 		return { age, m, d }
 	}
 
 	function getBirthdayString() {
 		return year + '-' + month + '-' + day
+	}
+
+	function getDaysInMonth(birthDay) {
+		const birthDate = new Date(birthDay)
+
+		return new Date(birthDate.getFullYear(), birthDate.getMonth() + 1, 0).getDate()
 	}
 
 	return (
