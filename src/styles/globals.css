@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
 	font-family: "Poppins";
 	src: url("../assets/fonts/Poppins-Bold.ttf");
-}
+} */
 
 body {
 	@apply bg-gray-100 font-sans
+}
+
+p {
+	@apply mt-2 text-5xl italic
+}
+
+span {
+	@apply text-purple-700
 }

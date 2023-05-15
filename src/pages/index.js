@@ -65,14 +65,29 @@ export default function Home() {
 						year={year}
 						setYear={setYear}
 					/>
-					<div className='before:block before:my-20 before:h-[1px] before:w-full before:bg-gray-300 before:mx-auto'>
+					<div className='before: before:block before:my-20 before:h-[1px] before:w-full before:bg-gray-300 before:mx-auto'>
 					</div>
 					{/* <div className='bg-black'>
 						<svg className='w-12 h-12 text-white ' src={icon} />
 					</div> */}
-					<p>{!year ? '-- ' : calculateAge(getBirthdayString()).age} years</p>
-					<p>{!year ? '-- ' : calculateAge(getBirthdayString()).m} months</p>
-					<p>{!year ? '-- ' : calculateAge(getBirthdayString()).d} days</p>
+					<p >
+						<span>
+							{!year ? '-- ' : calculateAge(getBirthdayString()).age}
+						</span>
+						&nbsp;years
+					</p>
+					<p >
+						<span>
+							{!year ? '-- ' : calculateAge(getBirthdayString()).m}
+						</span>
+						&nbsp;months
+					</p>
+					<p >
+						<span>
+							{!year ? '-- ' : calculateAge(getBirthdayString()).d}
+						</span>
+						&nbsp;days
+					</p>
 				</section>
 			</main>
 		</>

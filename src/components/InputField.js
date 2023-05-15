@@ -9,7 +9,7 @@ export default function InputField({ children, placeholder, value, setState }) {
 	return (
 		<div className="w-1/3">
 			<label
-				className="text-gray-500"
+				className="font-bold tracking-widest text-gray-500 font-xl "
 			>
 				{children}
 				<input
